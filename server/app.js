@@ -2,9 +2,10 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors")
 const connectDB = require("./config/db");
-const dotenv = require("dotenv")
+const dotenv =require('dotenv')
 const contact = require("./routes/contact")
 
+dotenv.config();
 
 const app = express();
 
@@ -18,8 +19,10 @@ app.use(express.json());
 app.use("/",contact);
 
 //server configuration
-console.log(process.env.PORT);
-const PORT = process.env.PORT ||8000
+// console.log(process.env.PORT);
+const PORT = process.env.PORT || 8000
+
+
 app.listen(PORT,
     async() => {
         try{

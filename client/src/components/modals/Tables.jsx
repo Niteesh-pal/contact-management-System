@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import { BASE_URL } from '../Base_url';
 import styles from './table.module.css';
 import { CiEdit } from "react-icons/ci";
 import { AiOutlineDelete } from "react-icons/ai";
@@ -38,7 +39,7 @@ const Tables = ({newContact}) => {
   }
   useEffect(() => {
 
-      fetchAPI("http://localhost:8000/");
+      fetchAPI(BASE_URL);
 
   }, [newContact]);
   // console.log(con);
@@ -47,7 +48,7 @@ const handleEdit=  async (e)=>{
       
   setEditCon(e);
   try{
-  const res = await axios.get(`http://localhost:8000/${e}`);
+  const res = await axios.get(BASE_URL+"/"+e);
         usetName(res.data.name);
         usetPhone(res.data.phone);
         usetMail(res.data.email);
@@ -63,7 +64,7 @@ const handleEdit=  async (e)=>{
  const handleDelete= async(id)=>{
   console.log(id);
   try{
-  await axios.delete(`http://localhost:8000/${id}`)
+  await axios.delete(BASE_URL+"/"+id)
   .then(res=>{
     console.log(res);
     window.location.reload(false);
@@ -80,7 +81,7 @@ catch(err){
   const handleUpdate = async(id, e)=>{
     console.log(e);
     try{
-    await axios.put(`http://localhost:8000/${id}`,{name:uname,phone:uphone,email:umail})
+    await axios.put(BASE_URL+"/"+id,{name:uname,phone:uphone,email:umail})
     .then(res=>{
       console.log(res);
       usetName(res.data.name);

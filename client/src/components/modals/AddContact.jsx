@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styles from './AddCon.module.css';
 import { GrClose } from "react-icons/gr";
+import { BASE_URL } from '../Base_url';
 import axios from 'axios';
 const AddContact = ({ close , handleChange}) => {
     const [name, setName] = useState("");
@@ -20,17 +21,19 @@ const AddContact = ({ close , handleChange}) => {
             console.log(true);
             try {
 
-               await axios.post("http://localhost:8000/create", {
+               await axios.post(BASE_URL+"/create", {
                     name, phone, email
                 }).then((res)=>{
                     close();
                     handleChange(res.data);
+                    
                 });
 
                 
             }
             catch (err) {
                 console.log(err);
+                
             }
 
         }

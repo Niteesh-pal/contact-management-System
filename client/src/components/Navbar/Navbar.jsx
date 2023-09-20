@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from "./Navbar.module.css";
+import {FaUserAlt} from 'react-icons/fa';
 const Navbar = () => {
   return (
     <section className={styles.section}>
@@ -9,8 +10,8 @@ const Navbar = () => {
       </div>
       <div className={styles.user}>
         <div >
-          <span>user logo</span>
-          <span>user name</span>
+          <span><FaUserAlt size={23}/></span>
+          
         </div>
       </div>
     </section>
